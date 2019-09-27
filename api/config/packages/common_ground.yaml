@@ -6,24 +6,20 @@ parameters:
     env(CONDUCTION_COMMONGROUND_BAG_APIKEY): 'Change me your .env file'
     common_ground.bag.location: 'https://bag.basisregistraties.overheid.nl/api/v1/'
     common_ground.bag.apikey: 'e8a95365-3078-4b41-990a-e3de43cecd36'
-    common_ground.oas.type: tool
+    common_ground.oas.type: service
     common_ground.oas.servers:
             -
               description: Demo Omgeving
-              url: 'http://proto.demo.common-ground.dev'       
+              url: 'http://is.zaakonline.nl'       
     common_ground.oas.externalDocs:
             -
               description: OAS Documentatie
-              url: 'http://proto.demo.common-ground.dev'  
+              url: 'http://is.zaakonline.nl'       
     common_ground.oas.developers:
             -
               name: Conduction
               url: https://github.com/ConductionNL
               email: info@conduction.nl
-            -
-              name: Gemeente 's-Hertogenbosch
-              url: https://github.com/gemeenteshertogenbosch
-              email: info@s-hertogenbosch.nl/
             -
               name: Gemeente Utrecht
               url: https://github.com/GemeenteUtrecht

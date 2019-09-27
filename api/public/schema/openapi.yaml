@@ -1,9 +1,9 @@
 openapi: 3.0.2
 info:
-  title: 'Common Ground Component'
+  title: 'Instemmingservice (IS)'
   version: 0.0.1
   description: |
-    Dit is een commonground voorbeeld applicatie 
+    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar. 
           
     Word lid van het slackkanaal [https://zaakonline.slack.com](https://zaakonline.slack.com) voor ondersteuning door het ontwikkel team. En krijg regelmatig updates over de ontwikkelingen op het gebied van de zaakonline componenten.
             
@@ -387,22 +387,18 @@ components:
 servers:
   -
     description: 'Demo Omgeving'
-    url: 'http://proto.demo.common-ground.dev'
+    url: 'http://is.zaakonline.nl'
 externalDocs:
   -
     description: 'OAS Documentatie'
-    url: 'http://proto.demo.common-ground.dev'
+    url: 'http://is.zaakonline.nl'
 x-commonground:
-  type: tool
+  type: service
   developers:
     -
       name: Conduction
       url: 'https://github.com/ConductionNL'
       email: info@conduction.nl
-    -
-      name: 'Gemeente ''s-Hertogenbosch'
-      url: 'https://github.com/gemeenteshertogenbosch'
-      email: info@s-hertogenbosch.nl/
     -
       name: 'Gemeente Utrecht'
       url: 'https://github.com/GemeenteUtrecht'
