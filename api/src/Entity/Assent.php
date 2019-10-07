@@ -48,7 +48,7 @@ class Assent
      * @var string $token a secret token used to validate the assent
      *
      * @Groups({"read"})
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
     
@@ -130,7 +130,7 @@ class Assent
      */
     private $requester;
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
