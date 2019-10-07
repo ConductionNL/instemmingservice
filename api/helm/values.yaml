@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 php:
-  repository: docker.io/conduction/api-platform/instemmingservice-php
+  repository: docker.io/conduction/irc-php
   tag: latest
   pullPolicy: Always
   replicaCount: 1
@@ -20,15 +20,15 @@ php:
     - 192.168.0.0/16
 
 nginx:
-  repository: docker.io/conduction/api-platform/instemmingservice-nginx
+  repository: docker.io/conduction/irc-nginx
   tag: latest
   pullPolicy: Always
   replicaCount: 1
 
 varnish:
   enabled: true
-  #url: https://example.com
-  repository: docker.io/conduction/instemmingservice-varnish
+  url: https://irc-varnish
+  repository: docker.io/conduction/irc-varnish
   tag: latest
   pullPolicy: Always
   replicaCount: 1
