@@ -8,14 +8,11 @@ info:
     - Reference: pc
     - Enviroment: dev
     - Version: V.0.1
-    - Repository: []() / [zip](/archive/master.zip)
+    - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
     - Datamodel: [postman](/schema/openapi.postman_collection) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
-    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar. 
-                             
-    Voor het gebruik van deze applicatie is een JWT Token nodig, deze hangt altijd vast aan een applicatie, ofwel user. Geldige JWT Tokens worden aangemaakt bij het registreren van een applicatie en kennen een beperkte houdbaarheid. 
-    JWT Tokens kunnen zowel worden verlengd, als opnieuw worden aangevraagd, dit aan de hand van de applicatie id en sleutel.
-    Let er bij het meegeven van JWT tokens op dat deze moet worden voorafgegaan door een Bearer en een spatie, onder de header Authorization. De volledig naam wordt daarmee: 'Authorization: Bearer [TOKEN]'.
+    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
 paths:
   /assents:
@@ -198,8 +195,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -239,6 +240,8 @@ paths:
             type: string
             format: date-time
           in: query
+      produces:
+        - application/health+json
     post:
       tags:
         - Assent
@@ -307,14 +310,44 @@ paths:
               $ref: '#/components/schemas/Assent-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Assent-write'
-        description: 'The new Assent resource'
-  '/assents/{id}':
+              $ref: '#/components/schemas/ExampleEntity-write'
+        description: 'The new ExampleEntity resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/example_entities/{id}':
     get:
       tags:
-        - Assent
-      operationId: getAssentItem
-      summary: 'Retrieves a Assent resource.'
+        - ExampleEntity
+      operationId: audittrailExampleEntityItem
+      summary: 'Retrieves a ExampleEntity resource.'
       parameters:
         -
           name: id
@@ -348,8 +381,12 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
           in: header
         -
           name: 'extend[]'
@@ -419,52 +456,8 @@ paths:
                 $ref: '#/components/schemas/Assent-read'
         404:
           description: 'Resource not found'
-    delete:
-      tags:
-        - Assent
-      operationId: deleteAssentItem
-      summary: 'Removes the Assent resource.'
-      responses:
-        204:
-          description: 'Assent resource deleted'
-        404:
-          description: 'Resource not found'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: string
-        -
-          name: Authorization
-          description: 'The JWT of the entity performing the request'
-          in: header
-        -
-          name: API-Version
-          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
-          example: 1.0.1
-          in: header
-        -
-          name: X-NLX-Logrecord-ID
-          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
-          in: header
-        -
-          name: X-NLX-Request-Process-Id
-          description: 'A process id for purpose registration (doelbinding)'
-          in: header
-        -
-          name: X-NLX-Request-Data-Elements
-          description: 'A list of requested data elements'
-          in: header
-        -
-          name: X-NLX-Request-Data-Subject
-          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
-          in: header
-        -
-          name: X-Audit-Clarification
-          description: 'A clarification as to why a request has been made  (doelbinding)'
-          in: header
+      produces:
+        - application/health+json
     put:
       tags:
         - Assent
@@ -503,7 +496,7 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
       responses:
@@ -563,13 +556,18 @@ paths:
               $ref: '#/components/schemas/Assent-write'
           text/html:
             schema:
-              $ref: '#/components/schemas/Assent-write'
-        description: 'The updated Assent resource'
-    patch:
+              $ref: '#/components/schemas/ExampleEntity-write'
+        description: 'The updated ExampleEntity resource'
+    delete:
       tags:
-        - Assent
-      operationId: patchAssentItem
-      summary: 'Updates the Assent resource.'
+        - ExampleEntity
+      operationId: deleteExampleEntityItem
+      summary: 'Removes the ExampleEntity resource.'
+      responses:
+        204:
+          description: 'ExampleEntity resource deleted'
+        404:
+          description: 'Resource not found'
       parameters:
         -
           name: id
@@ -603,73 +601,14 @@ paths:
           description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
           in: header
         -
-          name: X-Audit-Clarification
+          name: X-NLX-Audit-Clarification
           description: 'A clarification as to why a request has been made  (doelbinding)'
           in: header
-      responses:
-        200:
-          description: 'Assent resource updated'
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            application/ld+json:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            application/vnd.api+json:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            application/x-yaml:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-            text/html:
-              schema:
-                $ref: '#/components/schemas/Assent-read'
-        400:
-          description: 'Invalid input'
-        404:
-          description: 'Resource not found'
-      requestBody:
-        content:
-          application/hal+json:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          application/ld+json:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          application/vnd.api+json:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          application/x-yaml:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          text/csv:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-          text/html:
-            schema:
-              $ref: '#/components/schemas/Assent-write'
-        description: 'The updated Assent resource'
 components:
   schemas:
     Assent-read:
       type: object
-      description: ''
+      description: 'This is an example entity'
       properties:
         id:
           readOnly: true
@@ -707,7 +646,9 @@ components:
           type: string
     Assent-write:
       type: object
-      description: ''
+      description: 'This is an example entity'
+      required:
+        - name
       properties:
         name:
           description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
@@ -715,27 +656,14 @@ components:
         description:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
-        request:
-          description: 'The request that this assent applies to'
-          type: string
-        property:
-          description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
-          type: string
-        process:
-          description: 'The procces that this assent originated from'
-          type: string
-        contact:
-          description: 'The contact that this assent applies to'
-          type: string
-        person:
-          description: 'The person that this assent applies to'
-          type: string
-        status:
-          description: 'The status of this assent e.g. requested, accepted, denied'
-          type: string
-        requester:
-          description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
-          type: string
+tags:
+  -
+    name: ExampleEntity
+    description: |
+      This is an example entity
+      
+      With an adtional description, all in all its pritty nice [url](www.google.nl)
+host: irc.zaakonline.nl
 servers:
   -
     description: 'Demo Omgeving'
