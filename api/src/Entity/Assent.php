@@ -38,6 +38,9 @@ class Assent
      *
      * @Groups({"read"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $token;
 
@@ -46,6 +49,10 @@ class Assent
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $name;
 
@@ -63,6 +70,9 @@ class Assent
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $request;
 
@@ -72,6 +82,9 @@ class Assent
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $property;
 
@@ -81,6 +94,9 @@ class Assent
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max =255
+     * )
      */
     private $process;
 
@@ -90,6 +106,9 @@ class Assent
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $contact;
 
@@ -99,6 +118,9 @@ class Assent
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $person;
 
@@ -107,6 +129,9 @@ class Assent
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $status;
 
@@ -116,6 +141,10 @@ class Assent
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\NotBlank
+     * @Assert\Length (
+     *     max = 255
+     * )
      */
     private $requester;
 
