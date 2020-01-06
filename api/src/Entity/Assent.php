@@ -25,18 +25,6 @@ class Assent
     /**
      * @var UuidInterface
      *
-     * @ApiProperty(
-     * 	   identifier=true,
-     *     attributes={
-     *         "swagger_context"={
-     *         	   "description" = "The UUID identifier of this object",
-     *             "type"="string",
-     *             "format"="uuid",
-     *             "example"="e2984465-190a-4562-829e-a8cca81aa35d"
-     *         }
-     *     }
-     * )
-     *
      * @Groups({"read"})
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
@@ -44,7 +32,7 @@ class Assent
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     private $id;
-  
+
     /**
      * @var string $token a secret token used to validate the assent
      *
@@ -101,8 +89,7 @@ class Assent
     private $property;
 
     /**
-     * @var string $process The procces that this assent originated from
-
+     * @var string $process The process that this assent originated from
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -166,7 +153,6 @@ class Assent
         return $this->id;
     }
 
-  
     public function getToken(): ?string
     {
         return $this->token;
@@ -195,7 +181,6 @@ class Assent
     {
         return $this->description;
     }
-
 
     public function setDescription(?string $description): self
     {
@@ -229,17 +214,14 @@ class Assent
         return $this;
     }
 
-  
     public function getProperty(): ?string
     {
         return $this->property;
     }
 
-
     public function setProperty(?string $property): self
     {
         $this->property = $property;
-
 
         return $this;
     }
@@ -256,12 +238,10 @@ class Assent
         return $this;
     }
 
-  
     public function getPerson(): ?string
     {
         return $this->person;
     }
-
 
     public function setPerson(?string $person): self
     {
