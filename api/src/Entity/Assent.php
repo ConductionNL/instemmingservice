@@ -8,6 +8,7 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -22,7 +23,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 class Assent
 {
     /**
-     * @var \Ramsey\Uuid\UuidInterface
+     * @var UuidInterface
      *
      * @ApiProperty(
      * 	   identifier=true,
@@ -43,26 +44,33 @@ class Assent
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     private $id;
-    
+  
     /**
      * @var string $token a secret token used to validate the assent
      *
      * @Groups({"read"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $token;
-    
+
     /**
      * @var string $name The name of this assend is displayed as a title to end users and should make clear what they arre assending to
-     * 
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $name;
-    
+
     /**
      * @var string $description The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to
-     * 
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="text", nullable=true)
      */
@@ -70,63 +78,86 @@ class Assent
 
     /**
      * @var string $request The request that this assent applies to
-     * 
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $request;
-    
+
     /**
      * @var string $property The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
-     * 
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $property;
 
     /**
      * @var string $process The procces that this assent originated from
-     * 
+
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max =255
+     * )
      */
     private $process;
-    
+
     /**
-     * @var string $contact The contact that this assent applies to 
-     * 
+     * @var string $contact The contact that this assent applies to
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $contact;
-    
+
     /**
-     * @var string $person The person that this assent applies to 
-     * 
+     * @var string $person The person that this assent applies to
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $person;
 
     /**
      * @var string $status The status of this assent e.g. requested, accepted, denied
-     * 
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255
+     * )
      */
     private $status;
 
     /**
      * @var string requester The organisation (RSIN) or person (BSN) that is responsible for making this assent
-     * 
+     *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
 	 * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\NotBlank
+     * @Assert\Length (
+     *     max = 255
+     * )
      */
     private $requester;
 
@@ -134,43 +165,45 @@ class Assent
     {
         return $this->id;
     }
-    
+
+  
     public function getToken(): ?string
     {
         return $this->token;
     }
-    
+
     public function setToken(string $token): self
     {
         $this->token = $token;
-        
+
         return $this;
     }
-    
+
     public function getName(): ?string
     {
         return $this->name;
     }
-    
+
     public function setName(string $name): self
     {
         $this->name = $name;
-        
+
         return $this;
     }
-    
+
     public function getDescription(): ?string
     {
         return $this->description;
     }
-    
+
+
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-        
+
         return $this;
     }
-    
+
 
     public function getRequest(): ?string
     {
@@ -195,16 +228,19 @@ class Assent
 
         return $this;
     }
-    
+
+  
     public function getProperty(): ?string
     {
         return $this->property;
     }
-    
+
+
     public function setProperty(?string $property): self
     {
         $this->property = $property;
-        
+
+
         return $this;
     }
 
@@ -219,16 +255,18 @@ class Assent
 
         return $this;
     }
-    
+
+  
     public function getPerson(): ?string
     {
         return $this->person;
     }
-    
+
+
     public function setPerson(?string $person): self
     {
         $this->person = $person;
-        
+
         return $this;
     }
     public function getStatus(): ?string

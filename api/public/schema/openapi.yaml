@@ -29,7 +29,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
             application/ld+json:
               schema:
                 type: object
@@ -44,32 +44,32 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
             application/xml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
             application/x-yaml:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
             text/csv:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
             text/html:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExampleEntity-read'
+                  $ref: '#/components/schemas/Assent-read'
       parameters:
         -
           name: request
@@ -259,28 +259,29 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
+
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
           links:
             GetAssentItem:
               parameters:
@@ -295,25 +296,25 @@ paths:
         content:
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/ld+json:
             schema:
               $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           text/html:
             schema:
               $ref: '#/components/schemas/ExampleEntity-write'
@@ -438,28 +439,28 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
         404:
           description: 'Resource not found'
       produces:
@@ -511,28 +512,28 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/ld+json:
               schema:
                 $ref: '#/components/schemas/ExampleEntity:jsonld-read'
             application/vnd.api+json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/json:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/xml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             application/x-yaml:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             text/csv:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
             text/html:
               schema:
-                $ref: '#/components/schemas/ExampleEntity-read'
+                $ref: '#/components/schemas/Assent-read'
         400:
           description: 'Invalid input'
         404:
@@ -541,25 +542,25 @@ paths:
         content:
           application/hal+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/ld+json:
             schema:
               $ref: '#/components/schemas/ExampleEntity:jsonld-write'
           application/vnd.api+json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/xml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           application/x-yaml:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           text/csv:
             schema:
-              $ref: '#/components/schemas/ExampleEntity-write'
+              $ref: '#/components/schemas/Assent-write'
           text/html:
             schema:
               $ref: '#/components/schemas/ExampleEntity-write'
@@ -612,7 +613,7 @@ paths:
           in: header
 components:
   schemas:
-    ExampleEntity-read:
+    Assent-read:
       type: object
       description: 'This is an example entity.'
       properties:
@@ -621,11 +622,15 @@ components:
           externalDocs:
             url: 'http://schema.org/identifier'
           type: string
+        token:
+          readOnly: true
+          description: 'a secret token used to validate the assent'
+          type: string
         name:
-          description: 'The name of this example property'
+          description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
           type: string
         description:
-          description: 'The description of this example property'
+          description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
         camelCase:
           description: 'Proof that we camel case our api'
@@ -692,10 +697,10 @@ components:
           readOnly: true
           type: string
         name:
-          description: 'The name of this example property'
+          description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
           type: string
         description:
-          description: 'The description of this example property'
+          description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
         camelCase:
           description: 'Proof that we camel case our api'
