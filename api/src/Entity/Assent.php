@@ -44,7 +44,7 @@ class Assent
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
      */
     private $id;
-
+  
     /**
      * @var string $token a secret token used to validate the assent
      *
@@ -102,6 +102,7 @@ class Assent
 
     /**
      * @var string $process The procces that this assent originated from
+
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -165,6 +166,7 @@ class Assent
         return $this->id;
     }
 
+  
     public function getToken(): ?string
     {
         return $this->token;
@@ -193,6 +195,7 @@ class Assent
     {
         return $this->description;
     }
+
 
     public function setDescription(?string $description): self
     {
@@ -226,14 +229,17 @@ class Assent
         return $this;
     }
 
+  
     public function getProperty(): ?string
     {
         return $this->property;
     }
 
+
     public function setProperty(?string $property): self
     {
         $this->property = $property;
+
 
         return $this;
     }
@@ -250,10 +256,12 @@ class Assent
         return $this;
     }
 
+  
     public function getPerson(): ?string
     {
         return $this->person;
     }
+
 
     public function setPerson(?string $person): self
     {
