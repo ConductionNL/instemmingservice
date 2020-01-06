@@ -1,6 +1,6 @@
 publiccodeYmlVersion: "0.2"
 
-name: is
+name: irc
 applicationSuite: commonground
 url: "https://github.com/ConductionNL/Proto-component-commonground"
 landingURL: "irc.zaakonline.nl" 

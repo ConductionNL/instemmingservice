@@ -5,12 +5,12 @@ info:
   description: |
     API Details
     - Component: Instemmingen Registratie Component
-    - Reference: is
+    - Reference: irc
     - Enviroment: dev
     - Version: V.0.1
     - Repository: [online](https://github.com/ConductionNL/Proto-component-commonground) / [zip](https://github.com/ConductionNL/Proto-component-commonground/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/pc-php) 
-    - Datamodel: [postman](/schema/is.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
+    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/irc-php) 
+    - Datamodel: [postman](/schema/irc.postman_collection.json) / [oas](/schema/openapi.yaml) / [pdf](/schema/datamodel.pdf) / [mwb](/schema/datamodel.mwb) 
     
     'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
     
@@ -729,9 +729,15 @@ components:
         requester:
           description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
           type: string
+      required:
+        - name
+        - requester
     Assent-write:
       type: object
       description: ''
+      required:
+        - name
+        - requester
       properties:
         name:
           description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
@@ -807,9 +813,15 @@ components:
         requester:
           description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
           type: string
+      required:
+        - name
+        - requester
     'Assent:jsonld-write':
       type: object
       description: ''
+      required:
+        - name
+        - requester
       properties:
         '@context':
           readOnly: true
@@ -851,28 +863,45 @@ definitions:
   Assent-read:
     properties:
       id: []
-      token: []
-      name: []
+      token:
+        maxLength: 255
+      name:
+        maxLength: 255
       description: []
-      request: []
-      property: []
-      process: []
-      contact: []
-      person: []
-      status: []
-      requester: []
+      request:
+        maxLength: 255
+      property:
+        maxLength: 255
+      process:
+        maxLength: 255
+      contact:
+        maxLength: 255
+      person:
+        maxLength: 255
+      status:
+        maxLength: 255
+      requester:
+        maxLength: 255
     required: []
   Assent-write:
     properties:
-      name: []
+      name:
+        maxLength: 255
       description: []
-      request: []
-      property: []
-      process: []
-      contact: []
-      person: []
-      status: []
-      requester: []
+      request:
+        maxLength: 255
+      property:
+        maxLength: 255
+      process:
+        maxLength: 255
+      contact:
+        maxLength: 255
+      person:
+        maxLength: 255
+      status:
+        maxLength: 255
+      requester:
+        maxLength: 255
     required: []
 tags:
   -
