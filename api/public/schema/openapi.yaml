@@ -866,19 +866,27 @@ definitions:
       token:
         maxLength: 255
       name:
+        example: 'My Assent'
         maxLength: 255
-      description: []
+      description:
+        example: 'This is the best assent ever'
       request:
+        example: 'https://www.example.org/requests/1'
         maxLength: 255
       property:
+        example: 'https://www.example.org/people/1'
         maxLength: 255
       process:
+        example: 'https://www.example.org/processes/1'
         maxLength: 255
       contact:
+        example: 'https://www.example.org/contacts/1'
         maxLength: 255
       person:
+        example: 'https://www.example.org/people/2'
         maxLength: 255
       status:
+        example: requested
         maxLength: 255
       requester:
         maxLength: 255
@@ -886,19 +894,27 @@ definitions:
   Assent-write:
     properties:
       name:
+        example: 'My Assent'
         maxLength: 255
-      description: []
+      description:
+        example: 'This is the best assent ever'
       request:
+        example: 'https://www.example.org/requests/1'
         maxLength: 255
       property:
+        example: 'https://www.example.org/people/1'
         maxLength: 255
       process:
+        example: 'https://www.example.org/processes/1'
         maxLength: 255
       contact:
+        example: 'https://www.example.org/contacts/1'
         maxLength: 255
       person:
+        example: 'https://www.example.org/people/2'
         maxLength: 255
       status:
+        example: requested
         maxLength: 255
       requester:
         maxLength: 255
