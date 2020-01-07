@@ -46,6 +46,7 @@ class Assent
 
     /**
      * @var string $name The name of this assend is displayed as a title to end users and should make clear what they arre assending to
+     * @example My Assent
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
@@ -58,6 +59,7 @@ class Assent
 
     /**
      * @var string $description The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to
+     * @example This is the best assent ever
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="text", nullable=true)
@@ -66,6 +68,7 @@ class Assent
 
     /**
      * @var string $request The request that this assent applies to
+     * @example https://www.example.org/requests/1
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -78,6 +81,7 @@ class Assent
 
     /**
      * @var string $property The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
+     * @example https://www.example.org/people/1
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -90,6 +94,7 @@ class Assent
 
     /**
      * @var string $process The process that this assent originated from
+     * @example https://www.example.org/processes/1
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -102,6 +107,7 @@ class Assent
 
     /**
      * @var string $contact The contact that this assent applies to
+     * @example https://www.example.org/contacts/1
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -114,6 +120,7 @@ class Assent
 
     /**
      * @var string $person The person that this assent applies to
+     * @example https://www.example.org/people/2
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -126,6 +133,7 @@ class Assent
 
     /**
      * @var string $status The status of this assent e.g. requested, accepted, denied
+     * @example requested
      *
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
