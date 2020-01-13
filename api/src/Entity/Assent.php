@@ -13,7 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * An assent registers if assents are given for mutations that require one
  *
- *
+ * @author Ruben van der Linde <ruben@conduction.nl>
+ * @license EUPL <https://github.com/ConductionNL/contactcatalogus/blob/master/LICENSE.md>
  *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
