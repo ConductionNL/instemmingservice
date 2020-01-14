@@ -136,15 +136,16 @@ class Assent
     private $person;
 
     /**
-     * @var string The status of this assent e.g. requested, accepted, denied
+     * @var string The status of this assent e.g. requested, granted, declined
      *
      * @example requested
      *
+     * @Assert\Choice({"requested", "granted", "submitted", "declined"})
+	 * @Assert\Length(
+	 *      max = 255
+	 * )
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(
-     *     max = 255
-     * )
      */
     private $status;
 
