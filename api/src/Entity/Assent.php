@@ -11,6 +11,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * An assent registers if assents are given for mutations that require one.
+ *
+ * @author Ruben van der Linde <ruben@conduction.nl>
+ * @license EUPL <https://github.com/ConductionNL/contactcatalogus/blob/master/LICENSE.md>
+ *
  * @ApiResource(
  *     normalizationContext={"groups"={"read"}, "enable_max_depth"=true},
  *     denormalizationContext={"groups"={"write"}, "enable_max_depth"=true}
@@ -136,15 +141,16 @@ class Assent
     private $person;
 
     /**
-     * @var string The status of this assent e.g. requested, accepted, denied
+     * @var string The status of this assent e.g. requested, granted, declined
      *
      * @example requested
      *
+     * @Assert\Choice({"requested", "granted", "submitted", "declined"})
+     * @Assert\Length(
+     *      max = 255
+     * )
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(
-     *     max = 255
-     * )
      */
     private $status;
 
