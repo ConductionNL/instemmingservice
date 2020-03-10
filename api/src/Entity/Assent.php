@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * An assent registers if assents are given for mutations that require one.
@@ -47,7 +48,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\AssentRepository")
  * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
- * 
+ *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
  * @ApiFilter(DateFilter::class, strategy=DateFilter::EXCLUDE_NULL)
@@ -81,7 +82,7 @@ class Assent
      * @var string The name of this assend is displayed as a title to end users and should make clear what they arre assending to
      * @example My Assent
      *
-     * 
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255)
@@ -134,7 +135,7 @@ class Assent
      * @var string The process that this assent originated from
      * @example https://www.example.org/processes/1
      *
-     * 
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -149,7 +150,7 @@ class Assent
      * @var string The contact that this assent applies to
      * @example https://www.example.org/contacts/1
      *
-     * 
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -163,7 +164,7 @@ class Assent
     /**
      * @var string The person that this assent applies to
      * @example https://www.example.org/people/2
-     * 
+     *
      * @Gedmo\Versioned
      * @Groups({"read","write"})
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -201,7 +202,7 @@ class Assent
      * )
      */
     private $requester;
-    
+
     /**
      * @var Datetime $dateCreated The moment this resource was created
      *
@@ -210,7 +211,7 @@ class Assent
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreated;
-    
+
     /**
      * @var Datetime $dateModified  The moment this resource last Modified
      *
@@ -344,28 +345,28 @@ class Assent
 
         return $this;
     }
-    
+
     public function getDateCreated(): ?\DateTimeInterface
     {
     	return $this->dateCreated;
     }
-    
+
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
     	$this->dateCreated= $dateCreated;
-    	
+
     	return $this;
     }
-    
+
     public function getDateModified(): ?\DateTimeInterface
     {
     	return $this->dateModified;
     }
-    
+
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
     	$this->dateModified = $dateModified;
-    	
+
     	return $this;
     }
 }
