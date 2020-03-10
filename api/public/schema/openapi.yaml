@@ -25,6 +25,16 @@ paths:
         200:
           description: 'Assent collection response'
           content:
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 type: array
@@ -35,6 +45,16 @@ paths:
                 type: object
                 properties:
                   'hydra:member': { type: array, items: { $ref: '#/components/schemas/Assent:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/ExampleEntity:jsonld-read' } }
                   'hydra:totalItems': { type: integer, minimum: 0 }
                   'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
                   'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
@@ -257,6 +277,12 @@ paths:
         201:
           description: 'Assent resource created'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Assent-read'
@@ -293,6 +319,12 @@ paths:
           description: 'Resource not found'
       requestBody:
         content:
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
           application/hal+json:
             schema:
               $ref: '#/components/schemas/Assent-write'
@@ -436,6 +468,12 @@ paths:
         200:
           description: 'Assent resource response'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Assent-read'
@@ -555,6 +593,12 @@ paths:
         200:
           description: 'Assent resource updated'
           content:
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity-read'
             application/hal+json:
               schema:
                 $ref: '#/components/schemas/Assent-read'
@@ -585,6 +629,12 @@ paths:
           description: 'Resource not found'
       requestBody:
         content:
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity-write'
           application/hal+json:
             schema:
               $ref: '#/components/schemas/Assent-write'

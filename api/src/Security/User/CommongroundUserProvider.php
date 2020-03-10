@@ -48,8 +48,8 @@ class CommongroundUserProvider implements UserProviderInterface
 			return new CommongroundUser('Default User', $uuid, null, ['user']);
 		//}
 		
-		throw new UsernameNotFoundException(
-				sprintf('User "%s" does not exist.', $uuid)
-				);
+		$user = $users[0];
+		
+		return new CommongroundUser($user['username'], $user['id'], null, ['ROLE_USER'],$user['person'],$user['organization']);
 	}
 }
