@@ -116,7 +116,7 @@ class Assent
      * )
      */
     private $request;
-    
+
     /**
      * @var string The request that this assent applies to
      * @example https://www.example.org/requests/1
@@ -130,7 +130,7 @@ class Assent
      * )
      */
     private $forwardUrl;
-    
+
     /**
      * @var string The request that this assent applies to
      * @example https://www.example.org/requests/1
@@ -144,7 +144,7 @@ class Assent
      * )
      */
     private $token;
-       
+
 
     /**
      * @var string The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
@@ -245,7 +245,7 @@ class Assent
      * @var Datetime $dateModified  The moment this resource last Modified
      *
      * @Groups({"read"})
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
@@ -302,32 +302,32 @@ class Assent
 
         return $this;
     }
-    
+
     public function getForwardUrl(): ?string
     {
     	return $this->forwardUrl;
     }
-    
+
     public function setForwardUrl(?string $forwardUrl): self
     {
     	$this->forwardUrl = $forwardUrl;
-    	
+
     	return $this;
     }
-    
+
     public function getToken(): ?string
     {
     	return $this->token;
     }
-    
+
     public function setToken(?string $forwardUrl): self
     {
     	$this->token = $token;
-    	
+
     	return $this;
     }
-    
-    
+
+
     public function getProcess(): ?string
     {
         return $this->process;
