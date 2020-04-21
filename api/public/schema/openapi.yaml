@@ -147,6 +147,15 @@ paths:
               - asc
               - desc
         -
+          name: 'order[forwardUrl]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
           name: 'order[property]'
           in: query
           required: false
@@ -274,6 +283,22 @@ paths:
             type: string
         -
           name: 'request[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: forwardUrl
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'forwardUrl[]'
           in: query
           required: false
           schema:
@@ -3060,6 +3085,7 @@ components:
         id:
           readOnly: true
           type: string
+          format: uuid
         token:
           readOnly: true
           description: 'a secret token used to validate the assent'
@@ -3071,6 +3097,9 @@ components:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
         request:
+          description: 'The request that this assent applies to'
+          type: string
+        forwardUrl:
           description: 'The request that this assent applies to'
           type: string
         property:
@@ -3122,6 +3151,9 @@ components:
         request:
           description: 'The request that this assent applies to'
           type: string
+        forwardUrl:
+          description: 'The request that this assent applies to'
+          type: string
         property:
           description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
           type: string
@@ -3158,6 +3190,7 @@ components:
         id:
           readOnly: true
           type: string
+          format: uuid
         token:
           readOnly: true
           description: 'a secret token used to validate the assent'
@@ -3169,6 +3202,9 @@ components:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
         request:
+          description: 'The request that this assent applies to'
+          type: string
+        forwardUrl:
           description: 'The request that this assent applies to'
           type: string
         property:
@@ -3227,6 +3263,9 @@ components:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
         request:
+          description: 'The request that this assent applies to'
+          type: string
+        forwardUrl:
           description: 'The request that this assent applies to'
           type: string
         property:
@@ -3659,6 +3698,11 @@ definitions:
         type: string
         example: 'https://www.example.org/requests/1'
         maxLength: 255
+      forwardUrl:
+        description: 'The request that this assent applies to'
+        type: string
+        example: 'https://www.example.org/requests/1'
+        maxLength: 255
       property:
         description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
         type: string
@@ -3708,6 +3752,11 @@ definitions:
         type: string
         example: 'This is the best assent ever'
       request:
+        description: 'The request that this assent applies to'
+        type: string
+        example: 'https://www.example.org/requests/1'
+        maxLength: 255
+      forwardUrl:
         description: 'The request that this assent applies to'
         type: string
         example: 'https://www.example.org/requests/1'
@@ -3847,12 +3896,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-11 08:31:00'
+        example: '2020-04-21 12:42:06'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-11 08:31:00'
+        example: '2020-04-21 12:42:06'
     required: []
   AuditTrail-write:
     properties:
@@ -3900,12 +3949,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-03-11 08:31:00'
+        example: '2020-04-21 12:42:06'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-03-11 08:31:00'
+        example: '2020-04-21 12:42:06'
     required: []
   ChangeLog-write:
     properties:
@@ -3952,8 +4001,8 @@ securityDefinitions:
 host: irc.zaakonline.nl
 servers:
   -
-    description: 'Demo Omgeving'
-    url: 'http://is.zaakonline.nl'
+    name: conduction.nl
+    url: irc.dev.conduction.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
