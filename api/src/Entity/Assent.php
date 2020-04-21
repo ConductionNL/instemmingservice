@@ -118,6 +118,21 @@ class Assent
     private $request;
 
     /**
+     * @var string The request that this assent applies to
+     * @example https://www.example.org/requests/1
+     *
+     * @Gedmo\Versioned
+     * @Groups({"read","write"})
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ApiFilter(SearchFilter::class, strategy="exact")
+     * @Assert\Length(
+     *     max = 255
+     * )
+     */
+    private $forwardUrl;
+
+
+    /**
      * @var string The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
      * @example https://www.example.org/people/1
      *
@@ -216,7 +231,7 @@ class Assent
      * @var Datetime $dateModified  The moment this resource last Modified
      *
      * @Groups({"read"})
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
@@ -272,6 +287,18 @@ class Assent
         $this->request = $request;
 
         return $this;
+    }
+
+    public function getForwardUrl(): ?string
+    {
+    	return $this->forwardUrl;
+    }
+
+    public function setForwardUrl(?string $forwardUrl): self
+    {
+    	$this->forwardUrl = $forwardUrl;
+
+    	return $this;
     }
 
     public function getProcess(): ?string
