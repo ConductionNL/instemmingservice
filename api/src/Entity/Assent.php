@@ -195,7 +195,7 @@ class Assent
      * example requested
      *
      * @Gedmo\Versioned
-     * @Assert\Choice({"requested", "granted", "submitted", "declined"})
+     * @Assert\Choice({"requested", "granted", "submitted", "declined", "cancelled"})
      * @Assert\Length(
      *      max = 255
      * )
