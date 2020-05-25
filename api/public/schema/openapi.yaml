@@ -3087,51 +3087,59 @@ components:
           type: string
           format: uuid
         token:
-          readOnly: true
           description: 'a secret token used to validate the assent'
           type: string
+          nullable: true
         name:
           description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
           type: string
         description:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
+          nullable: true
         request:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         forwardUrl:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         property:
           description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
           type: string
+          nullable: true
         process:
           description: 'The process that this assent originated from'
           type: string
+          nullable: true
         contact:
           description: 'The contact that this assent applies to'
           type: string
+          nullable: true
         person:
           description: 'The person that this assent applies to'
           type: string
+          nullable: true
         status:
           description: |
             The status of this assent e.g. requested, granted, declined
             example requested
           type: string
+          nullable: true
         requester:
           description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
           type: string
         dateCreated:
-          readOnly: true
           description: 'The moment this resource was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - name
         - requester
@@ -3148,29 +3156,37 @@ components:
         description:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
+          nullable: true
         request:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         forwardUrl:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         property:
           description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
           type: string
+          nullable: true
         process:
           description: 'The process that this assent originated from'
           type: string
+          nullable: true
         contact:
           description: 'The contact that this assent applies to'
           type: string
+          nullable: true
         person:
           description: 'The person that this assent applies to'
           type: string
+          nullable: true
         status:
           description: |
             The status of this assent e.g. requested, granted, declined
             example requested
           type: string
+          nullable: true
         requester:
           description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
           type: string
@@ -3192,51 +3208,59 @@ components:
           type: string
           format: uuid
         token:
-          readOnly: true
           description: 'a secret token used to validate the assent'
           type: string
+          nullable: true
         name:
           description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
           type: string
         description:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
+          nullable: true
         request:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         forwardUrl:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         property:
           description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
           type: string
+          nullable: true
         process:
           description: 'The process that this assent originated from'
           type: string
+          nullable: true
         contact:
           description: 'The contact that this assent applies to'
           type: string
+          nullable: true
         person:
           description: 'The person that this assent applies to'
           type: string
+          nullable: true
         status:
           description: |
             The status of this assent e.g. requested, granted, declined
             example requested
           type: string
+          nullable: true
         requester:
           description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
           type: string
         dateCreated:
-          readOnly: true
           description: 'The moment this resource was created'
           type: string
           format: date-time
+          nullable: true
         dateModified:
-          readOnly: true
           description: 'The moment this resource last Modified'
           type: string
           format: date-time
+          nullable: true
       required:
         - name
         - requester
@@ -3262,29 +3286,37 @@ components:
         description:
           description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
           type: string
+          nullable: true
         request:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         forwardUrl:
           description: 'The request that this assent applies to'
           type: string
+          nullable: true
         property:
           description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
           type: string
+          nullable: true
         process:
           description: 'The process that this assent originated from'
           type: string
+          nullable: true
         contact:
           description: 'The contact that this assent applies to'
           type: string
+          nullable: true
         person:
           description: 'The person that this assent applies to'
           type: string
+          nullable: true
         status:
           description: |
             The status of this assent e.g. requested, granted, declined
             example requested
           type: string
+          nullable: true
         requester:
           description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
           type: string
@@ -3784,6 +3816,59 @@ definitions:
         type: string
         maxLength: 255
     required: []
+  ChangeLog-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
+        type: string
+      objectId:
+        description: ''
+        type: string
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
+        type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2020-05-25 11:48:57'
+      dateModified:
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2020-05-25 11:48:57'
+    required: []
+  ChangeLog-write:
+    properties:
+      note:
+        description: 'A note conserning this log lin'
+        type: string
+        example: 'This log line is suspicius'
+        maxLength: 2555
+    required: []
   AuditTrail-read:
     properties:
       id:
@@ -3888,12 +3973,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-04-23 07:37:56'
+        example: '2020-05-25 11:48:57'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-04-23 07:37:56'
+        example: '2020-05-25 11:48:57'
     required: []
   AuditTrail-write:
     properties:
@@ -3901,59 +3986,6 @@ definitions:
         description: 'A note conserning this log lin'
         type: string
         example: 'This log line looks suspicius'
-        maxLength: 2555
-    required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2020-04-23 07:37:56'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2020-04-23 07:37:56'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
         maxLength: 2555
     required: []
 tags:
@@ -3964,13 +3996,13 @@ tags:
       
       
   -
-    name: AuditTrail
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
@@ -3981,15 +4013,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
 host: irc.zaakonline.nl
 servers:
   -
@@ -3998,7 +4030,7 @@ servers:
 externalDocs:
   -
     description: 'OAS Documentatie'
-    url: 'http://is.zaakonline.nl'
+    url: 'http://proto.demo.common-ground.dev'
 x-commonground:
   type: service
   developers:
@@ -4006,6 +4038,10 @@ x-commonground:
       name: Conduction
       url: 'https://github.com/ConductionNL'
       email: info@conduction.nl
+    -
+      name: 'Gemeente "s-Hertogenbosch'
+      url: 'https://github.com/gemeenteshertogenbosch'
+      email: info@s-hertogenbosch.nl/
     -
       name: 'Gemeente Utrecht'
       url: 'https://github.com/GemeenteUtrecht'
