@@ -1,0 +1,16 @@
+apiVersion: v1
+entries:
+  irc:
+  - apiVersion: v1
+    appVersion: V.0.1
+    created: "2020-06-05T13:01:51.915074682Z"
+    description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
+      interface beschikbaar.&#039;'
+    digest: c087551a778beb8122bdb91bb028429ef177001c26b30bc6288cefc15cbd119c
+    home: irc.zaakonline.nl
+    icon: irc.zaakonline.nl
+    name: irc
+    urls:
+    - irc-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-06-05T13:01:51.723906679Z"

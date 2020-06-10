@@ -2,18 +2,17 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * An assent registers if assents are given for mutations that require one.
@@ -47,7 +46,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\AssentRepository")
- * @Gedmo\Loggable(logEntryClass="App\Entity\ChangeLog")
+ * @Gedmo\Loggable(logEntryClass="Conduction\CommonGroundBundle\Entity\ChangeLog")
  *
  * @ApiFilter(BooleanFilter::class)
  * @ApiFilter(OrderFilter::class)
@@ -80,6 +79,7 @@ class Assent
 
     /**
      * @var string The name of this assend is displayed as a title to end users and should make clear what they arre assending to
+     *
      * @example My Assent
      *
      *
@@ -95,6 +95,7 @@ class Assent
 
     /**
      * @var string The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to
+     *
      * @example This is the best assent ever
      *
      * @Gedmo\Versioned
@@ -105,6 +106,7 @@ class Assent
 
     /**
      * @var string The request that this assent applies to
+     *
      * @example https://www.example.org/requests/1
      *
      * @Gedmo\Versioned
@@ -116,9 +118,10 @@ class Assent
      * )
      */
     private $request;
-    
+
     /**
      * @var string The request that this assent applies to
+     *
      * @example https://www.example.org/requests/1
      *
      * @Gedmo\Versioned
@@ -130,24 +133,10 @@ class Assent
      * )
      */
     private $forwardUrl;
-    
-    /**
-     * @var string The request that this assent applies to
-     * @example https://www.example.org/requests/1
-     *
-     * @Gedmo\Versioned
-     * @Groups({"read","write"})
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @ApiFilter(SearchFilter::class, strategy="exact")
-     * @Assert\Length(
-     *     max = 255
-     * )
-     */
-    private $token;
-       
 
     /**
      * @var string The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk
+     *
      * @example https://www.example.org/people/1
      *
      * @Gedmo\Versioned
@@ -162,6 +151,7 @@ class Assent
 
     /**
      * @var string The process that this assent originated from
+     *
      * @example https://www.example.org/processes/1
      *
      *
@@ -177,6 +167,7 @@ class Assent
 
     /**
      * @var string The contact that this assent applies to
+     *
      * @example https://www.example.org/contacts/1
      *
      *
@@ -192,6 +183,7 @@ class Assent
 
     /**
      * @var string The person that this assent applies to
+     *
      * @example https://www.example.org/people/2
      *
      * @Gedmo\Versioned
@@ -206,10 +198,10 @@ class Assent
 
     /**
      * @var string The status of this assent e.g. requested, granted, declined
-     * example requested
+     *             example requested
      *
      * @Gedmo\Versioned
-     * @Assert\Choice({"requested", "granted", "submitted", "declined"})
+     * @Assert\Choice({"requested", "granted", "submitted", "declined", "cancelled"})
      * @Assert\Length(
      *      max = 255
      * )
@@ -233,7 +225,7 @@ class Assent
     private $requester;
 
     /**
-     * @var Datetime $dateCreated The moment this resource was created
+     * @var Datetime The moment this resource was created
      *
      * @Groups({"read"})
      * @Gedmo\Timestampable(on="create")
@@ -242,10 +234,10 @@ class Assent
     private $dateCreated;
 
     /**
-     * @var Datetime $dateModified  The moment this resource last Modified
+     * @var Datetime The moment this resource last Modified
      *
      * @Groups({"read"})
-     * @Gedmo\Timestampable(on="create")
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModified;
@@ -302,32 +294,19 @@ class Assent
 
         return $this;
     }
-    
+
     public function getForwardUrl(): ?string
     {
-    	return $this->forwardUrl;
+        return $this->forwardUrl;
     }
-    
+
     public function setForwardUrl(?string $forwardUrl): self
     {
-    	$this->forwardUrl = $forwardUrl;
-    	
-    	return $this;
+        $this->forwardUrl = $forwardUrl;
+
+        return $this;
     }
-    
-    public function getToken(): ?string
-    {
-    	return $this->token;
-    }
-    
-    public function setToken(?string $forwardUrl): self
-    {
-    	$this->token = $token;
-    	
-    	return $this;
-    }
-    
-    
+
     public function getProcess(): ?string
     {
         return $this->process;
@@ -402,25 +381,25 @@ class Assent
 
     public function getDateCreated(): ?\DateTimeInterface
     {
-    	return $this->dateCreated;
+        return $this->dateCreated;
     }
 
     public function setDateCreated(\DateTimeInterface $dateCreated): self
     {
-    	$this->dateCreated= $dateCreated;
+        $this->dateCreated = $dateCreated;
 
-    	return $this;
+        return $this;
     }
 
     public function getDateModified(): ?\DateTimeInterface
     {
-    	return $this->dateModified;
+        return $this->dateModified;
     }
 
     public function setDateModified(\DateTimeInterface $dateModified): self
     {
-    	$this->dateModified = $dateModified;
+        $this->dateModified = $dateModified;
 
-    	return $this;
+        return $this;
     }
 }
