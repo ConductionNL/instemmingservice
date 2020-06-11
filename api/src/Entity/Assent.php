@@ -197,11 +197,11 @@ class Assent
     private $person;
 
     /**
-     * @var string The status of this assent e.g. requested, granted, declined
+     * @var string The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
      *             example requested
      *
      * @Gedmo\Versioned
-     * @Assert\Choice({"requested", "granted", "submitted", "declined", "cancelled"})
+     * @Assert\Choice({"requested", "granted", "submitted", "declined", "cancelled", "withdrawn"})
      * @Assert\Length(
      *      max = 255
      * )
