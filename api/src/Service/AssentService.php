@@ -33,9 +33,9 @@ class AssentService
         $this->em->flush();
     }
 
-    public function createMessage($content, $resource, $receiver, $sender, $organization, $applicationOrganization){
+    public function createMessage($content, $resource, $receiver, $sender, $organization, $serviceOrganization){
         $messages = [];
-        $message['service'] = $this->commonGroundService->getResourceList(['component'=>'bs', 'type'=>'services'], "?type=mailer&organization={$applicationOrganization}")['hydra:member'][0]['@id'];
+        $message['service'] = $this->commonGroundService->getResourceList(['component'=>'bs', 'type'=>'services'], "?type=mailer&organization={$serviceOrganization}")['hydra:member'][0]['@id'];
         $message['status'] = 'queued';
         $message['sender'] = $sender;
         $message['reciever'] = $receiver;
@@ -48,7 +48,7 @@ class AssentService
         $assent = $this->commonGroundService->getResource($assent);
         $contact = $assent['contact'];
         $content = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}/e-mail-instemming"])['@id'];
-        $applicationOrganization = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"])['organization'];
+        $serviceOrganization = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"])['organization']['@id'];
         $senderArray = $this->commonGroundService->isCommonGround($assent['requester']);
 
         $sender = $contact;
@@ -68,7 +68,7 @@ class AssentService
             }
         }
 
-        $message = $this->createMessage($content, $assent, $contact, $sender, $organization, $applicationOrganization);
+        $message = $this->createMessage($content, $assent, $contact, $sender, $organization, $serviceOrganization);
         $result[] = $this->commonGroundService->createResource($message, ['component'=>'bs', 'type'=>'messages'])['@id'];
 
         return $result;
