@@ -17,7 +17,7 @@ settings:
   container: https://hub.docker.com/repository/docker/conduction/ias-php
   domain: westfriesland.commonground.nu
   subdomain: ias
-  subpath: 
+  subpath: ias
   subpathRouting: false
   organisationName: Conduction
   email: info@conduction.nl

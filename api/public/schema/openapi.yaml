@@ -3284,21 +3284,29 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         request:
           description: 'request the task is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         changeLog:
           description: 'changeLogs the webhook is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         result:
           description: 'The result of the webhook'
           type: array
           items:
             type: string
+          nullable: true
+        dateCreated:
+          description: 'The moment this resource was created'
+          type: string
+          format: date-time
           nullable: true
         dateModified:
           description: 'The moment this resource last Modified'
@@ -3314,16 +3322,19 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         request:
           description: 'request the task is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         changeLog:
           description: 'changeLogs the webhook is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
     'WebHook:jsonld-read':
       type: object
       description: ''
@@ -3349,21 +3360,29 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         request:
           description: 'request the task is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         changeLog:
           description: 'changeLogs the webhook is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         result:
           description: 'The result of the webhook'
           type: array
           items:
             type: string
+          nullable: true
+        dateCreated:
+          description: 'The moment this resource was created'
+          type: string
+          format: date-time
           nullable: true
         dateModified:
           description: 'The moment this resource last Modified'
@@ -3388,16 +3407,19 @@ components:
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         request:
           description: 'request the task is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
         changeLog:
           description: 'changeLogs the webhook is related to'
           externalDocs:
             url: 'http://schema.org/url'
           type: string
+          nullable: true
 definitions:
   WebHook-read:
     properties:
@@ -3487,12 +3509,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-02 09:51:31'
+        example: '2020-10-02 10:56:17'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-02 09:51:31'
+        example: '2020-10-02 10:56:17'
     required: []
   ChangeLog-write:
     properties:
@@ -3606,12 +3628,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-10-02 09:51:31'
+        example: '2020-10-02 10:56:17'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-10-02 09:51:31'
+        example: '2020-10-02 10:56:17'
     required: []
   AuditTrail-write:
     properties:

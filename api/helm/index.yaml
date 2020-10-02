@@ -3,14 +3,14 @@ entries:
   ias:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-10-02T10:04:20.3129355Z"
+    created: "2020-10-02T10:55:23.6545231Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 12c888c84a0f7949eff52a784a6cdb483880614e3e39a0a16068744f96e5047d
+    digest: 55539543780e938640d2205bd0380afe64d63bfe2c7a6ae2f16414c84fb59e29
     home: ias.zaakonline.nl
     icon: ias.zaakonline.nl
     name: ias
     urls:
     - ias-0.1.0.tgz
     version: 0.1.0
-generated: "2020-10-02T10:04:20.3065771Z"
+generated: "2020-10-02T10:55:23.6477082Z"
