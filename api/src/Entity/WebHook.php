@@ -50,7 +50,7 @@ class WebHook
      *
      * @example https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\Url
      */
     private $assent;
@@ -60,7 +60,7 @@ class WebHook
      *
      * @example https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\Url
      */
     private $request;
@@ -70,7 +70,7 @@ class WebHook
      *
      * @example https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d
      * @Groups({"read", "write"})
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\Url
      */
     private $changeLog;
@@ -154,6 +154,17 @@ class WebHook
         return $this;
     }
 
+    public function getDateCreated(): ?\DateTimeInterface
+    {
+        return $this->dateCreated;
+    }
+
+    public function setDateCreated(\DateTimeInterface $dateCreated): self
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
     public function getDateModified(): ?\DateTimeInterface
     {
         return $this->dateModified;

@@ -27,7 +27,7 @@ class AssentService
         if($webHook->getRequest()){
 
         } elseif($webHook->getAssent()) {
-            $this->processAssent($webHook->getAssent());
+            $webHook->setResult($this->processAssent($webHook->getAssent()));
         }
         $this->em->persist($webHook);
         $this->em->flush();
@@ -40,7 +40,7 @@ class AssentService
         $message['sender'] = $sender;
         $message['reciever'] = $receiver;
         $message['content'] = $content;
-        $message['data'] = ['resource'=>$resource, 'contact'=>$message['reciever'], 'organization'=>$message['sender']];
+        $message['data'] = ['resource'=>$resource, 'receiver'=>$receiver, 'organization'=>$organization, 'sender'=>$sender];
         return $message;
     }
 
@@ -59,7 +59,7 @@ class AssentService
                 $sender = $organization['contact'];
             }
             $organization = $organization['@id'];
-            var_dump($organization);
+//            var_dump($organization);
         } elseif($senderArray['component'] == 'cc'){
             $cc = $this->commonGroundService->getResource($senderArray);
             if(key_exists('emails', $cc) && count($cc['emails']) > 0 && key_exists('email', $cc['emails'][0])){
