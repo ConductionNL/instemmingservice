@@ -15,7 +15,7 @@ settings:
   repro: https://github.com/ConductionNL/proto-component
   demo: ias.zaakonline.nl
   container: https://hub.docker.com/repository/docker/conduction/ias-php
-  domain: westfriesland.commonground.nu
+  domain: zuid-drecht.nl
   subdomain: ias
   subpath: ias
   subpathRouting: false
