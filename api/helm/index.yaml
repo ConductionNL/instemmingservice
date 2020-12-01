@@ -3,14 +3,61 @@ entries:
   ias:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2020-10-02T10:55:23.6545231Z"
+    created: "2020-12-01T12:08:31.3631598Z"
     description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql)
       interface beschikbaar.&#039;'
-    digest: 55539543780e938640d2205bd0380afe64d63bfe2c7a6ae2f16414c84fb59e29
+    digest: 4ebbcefa3aa495290ce666b8607f1bfbb22e34df9241b1a4969f6d64167b4ce9
     home: ias.zaakonline.nl
     icon: ias.zaakonline.nl
     name: ias
     urls:
     - ias-0.1.0.tgz
     version: 0.1.0
-generated: "2020-10-02T10:55:23.6477082Z"
+  pc:
+  - apiVersion: v1
+    appVersion: V1.0
+    created: "2020-12-01T12:08:31.3753658Z"
+    description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
+      beschikbaar.
+    digest: 0b48e6b3faa2292b92b7582802ce074575d0d4d05bb3d1e6858e81303e349987
+    home: pc.zaakonline.nl
+    icon: pc.zaakonline.nl
+    name: pc
+    urls:
+    - pc-0.1.0.tgz
+    version: 0.1.0
+  postgresql:
+  - annotations:
+      category: Database
+    apiVersion: v2
+    appVersion: 11.10.0
+    created: "2020-12-01T12:08:31.3895626Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 1.x.x
+    description: Chart for PostgreSQL, an object-relational database management system
+      (ORDBMS) with an emphasis on extensibility and on standards-compliance.
+    digest: eebe8f456cf98d5927a35666d1d899174dc4d3e09f26788033f761527bc90749
+    home: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+    icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-110x117.png
+    keywords:
+    - postgresql
+    - postgres
+    - database
+    - sql
+    - replication
+    - cluster
+    maintainers:
+    - email: containers@bitnami.com
+      name: Bitnami
+    - email: cedric@desaintmartin.fr
+      name: desaintmartin
+    name: postgresql
+    sources:
+    - https://github.com/bitnami/bitnami-docker-postgresql
+    - https://www.postgresql.org/
+    urls:
+    - charts/postgresql-10.1.1.tgz
+    version: 10.1.1
+generated: "2020-12-01T12:08:31.3117296Z"
