@@ -4,21 +4,21 @@
 
 settings:
   registryBase: docker.io/conduction
-  projectName: pc
-  name: pc
-  title: Proto component commonground
+  projectName: ias
+  name: ias
+  title: Instemmingservice
   version: V1.0
   majorVersion: v1
-  id: 
+  id: 3f44c00e-d919-4f89-bd4c-b730c9b2620a
   description: '&#039;Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.&#039;'
   type: component
   repro: https://github.com/ConductionNL/proto-component
-  demo: pc.zaakonline.nl
-  container: https://hub.docker.com/repository/docker/conduction/pc-php
-  domain: conduction.nl
-  subdomain: pc
-  subpath: pc
-  subpathRouting: true
+  demo: ias.zaakonline.nl
+  container: https://hub.docker.com/repository/docker/conduction/ias-php
+  domain: zuid-drecht.nl
+  subdomain: ias
+  subpath: ias
+  subpathRouting: false
   organisationName: Conduction
   email: info@conduction.nl
   country: Netherlands
@@ -50,8 +50,8 @@ settings:
   archiveEnabled: false
 
 security:
-  commongroundId: "9329d8d0-1d5e-433c-bb47-6991053c7fcb"
-  commongroundKey: "9329d8d0-1d5e-433c-bb47-6991053c7fcb"
+  commongroundId: "3f44c00e-d919-4f89-bd4c-b730c9b2620a"
+  commongroundKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
   applicationKey: "45c1a4b6-59d3-4a6e-86bf-88a872f35845"
   userKey: "79d5b14c-70ab-41fb-ac02-917e3288870b"
   authorisationProviderUser: https://uc.zuid-drecht.nl
