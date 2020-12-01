@@ -4,8 +4,6 @@ namespace App\Service;
 
 use App\Entity\WebHook;
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
-use DateInterval;
-use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
@@ -24,16 +22,16 @@ class AssentService
 
     public function webHook(WebHook $webHook)
     {
-        if($webHook->getRequest()){
-
-        } elseif($webHook->getAssent()) {
+        if ($webHook->getRequest()) {
+        } elseif ($webHook->getAssent()) {
             $webHook->setResult($this->processAssent($webHook->getAssent()));
         }
         $this->em->persist($webHook);
         $this->em->flush();
     }
 
-    public function createMessage($content, $resource, $receiver, $sender, $organization, $serviceOrganization){
+    public function createMessage($content, $resource, $receiver, $sender, $organization, $serviceOrganization)
+    {
         $messages = [];
         $message['service'] = $this->commonGroundService->getResourceList(['component'=>'bs', 'type'=>'services'], "?type=mailer&organization={$serviceOrganization}")['hydra:member'][0]['@id'];
         $message['status'] = 'queued';
@@ -41,10 +39,12 @@ class AssentService
         $message['reciever'] = $receiver;
         $message['content'] = $content;
         $message['data'] = ['resource'=>$resource, 'receiver'=>$receiver, 'organization'=>$organization, 'sender'=>$sender];
+
         return $message;
     }
 
-    public function processAssent(string $assent){
+    public function processAssent(string $assent)
+    {
         $assent = $this->commonGroundService->getResource($assent);
         $contact = $assent['contact'];
         $content = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}/e-mail-instemming"])['@id'];
@@ -54,16 +54,16 @@ class AssentService
         $sender = $contact;
         $organization = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"]);
 
-        if($senderArray['component'] == 'wrc'){
+        if ($senderArray['component'] == 'wrc') {
             $organization = $this->commonGroundService->getResource($senderArray);
-            if(key_exists('contact', $organization) && $organization['contact']){
+            if (key_exists('contact', $organization) && $organization['contact']) {
                 $sender = $organization['contact'];
             }
             $organization = $organization['@id'];
 //            var_dump($organization);
-        } elseif($senderArray['component'] == 'cc'){
+        } elseif ($senderArray['component'] == 'cc') {
             $cc = $this->commonGroundService->getResource($senderArray);
-            if(key_exists('emails', $cc) && count($cc['emails']) > 0 && key_exists('email', $cc['emails'][0])){
+            if (key_exists('emails', $cc) && count($cc['emails']) > 0 && key_exists('email', $cc['emails'][0])) {
                 $sender = $assent['requester'];
             }
         }
@@ -74,7 +74,8 @@ class AssentService
         return $result;
     }
 
-    public function processRequest(string $request, string $changelog){
+    public function processRequest(string $request, string $changelog)
+    {
         $request = $this->commonGroundService->getResource($request);
         $changeLogs = $this->commonGroundService->getResource($request.'/change_log');
     }
