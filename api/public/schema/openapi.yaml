@@ -1,20 +1,1181 @@
 openapi: 3.0.2
 info:
-  title: Instemmingservice
+  title: ''
   version: V1.0
   description: |
     API Details
-    - Component: Instemmingservice
-    - Reference: ias
+    - Component: 
+    - Reference: instemmingservice
     - Enviroment: dev
     - Version: V1.0
-    - Repository: [online](https://github.com/ConductionNL/proto-component) / [zip](https://github.com/ConductionNL/proto-component/archive/master.zip)
-    - Docker Image: [online](https://hub.docker.com/repository/docker/conduction/ias-php) 
-    - Datamodel: [postman](schema/ias.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
+    - Repository: [online](https://github.com/ConductionNL/instemmingservice) / [zip](https://github.com/ConductionNL/instemmingservice/archive/master.zip)
+    - Docker Image: [online]() 
+    - Datamodel: [postman](schema/instemmingservice.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
-    'Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.'         
+    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
     
 paths:
+  /assents:
+    get:
+      tags:
+        - Assent
+      operationId: getAssentCollection
+      summary: 'Retrieves the collection of Assent resources.'
+      responses:
+        200:
+          description: 'Assent collection response'
+          content:
+            application/ld+json:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Assent:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/json+ld:
+              schema:
+                type: object
+                properties:
+                  'hydra:member': { type: array, items: { $ref: '#/components/schemas/Assent:jsonld-read' } }
+                  'hydra:totalItems': { type: integer, minimum: 0 }
+                  'hydra:view': { type: object, properties: { '@id': { type: string, format: iri-reference }, '@type': { type: string }, 'hydra:first': { type: string, format: iri-reference }, 'hydra:last': { type: string, format: iri-reference }, 'hydra:next': { type: string, format: iri-reference } } }
+                  'hydra:search': { type: object, properties: { '@type': { type: string }, 'hydra:template': { type: string }, 'hydra:variableRepresentation': { type: string }, 'hydra:mapping': { type: array, items: { type: object, properties: { '@type': { type: string }, variable: { type: string }, property: { type: string }, required: { type: boolean } } } } } }
+                required:
+                  - 'hydra:member'
+            application/hal+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/json+hal:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/vnd.api+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/json+vnd.api:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/health+json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/json+health:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            application/x-yaml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            text/csv:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+            text/html:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assent-read'
+      parameters:
+        -
+          name: 'order[id]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[token]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[name]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[description]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[request]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[forwardUrl]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[property]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[process]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[contact]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[person]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[status]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[requester]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateCreated]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'order[dateModified]'
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+        -
+          name: 'dateCreated[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateCreated[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_before]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'dateModified[strictly_after]'
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: request
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'request[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: forwardUrl
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'forwardUrl[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: property
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'property[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: process
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'process[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: contact
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'contact[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: person
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'person[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: requester
+          in: query
+          required: false
+          schema:
+            type: string
+        -
+          name: 'requester[]'
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+        -
+          name: page
+          in: query
+          required: false
+          description: 'The collection page number'
+          schema:
+            type: integer
+            default: 1
+        -
+          name: limit
+          in: query
+          required: false
+          description: 'The number of items per page'
+          schema:
+            type: integer
+            default: 30
+            minimum: 0
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      produces:
+        - application/health+json
+    post:
+      tags:
+        - Assent
+      operationId: postAssentCollection
+      summary: 'Creates a Assent resource.'
+      responses:
+        201:
+          description: 'Assent resource created'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+          links:
+            GetAssentItem:
+              parameters:
+                id: '$response.body#/id'
+              operationId: getAssentItem
+              description: 'The `id` value returned in the response can be used as the `id` parameter in `GET /assents/{id}`.'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Assent:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Assent:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+        description: 'The new Assent resource'
+      parameters:
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/assents/{id}':
+    get:
+      tags:
+        - Assent
+      operationId: getAssentItem
+      summary: 'Retrieves a Assent resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Assent resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+    put:
+      tags:
+        - Assent
+      operationId: putAssentItem
+      summary: 'Replaces the Assent resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+      responses:
+        200:
+          description: 'Assent resource updated'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+        400:
+          description: 'Invalid input'
+        404:
+          description: 'Resource not found'
+      requestBody:
+        content:
+          application/ld+json:
+            schema:
+              $ref: '#/components/schemas/Assent:jsonld-write'
+          application/json+ld:
+            schema:
+              $ref: '#/components/schemas/Assent:jsonld-write'
+          application/hal+json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json+hal:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json+vnd.api:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/health+json:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/json+health:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          application/x-yaml:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          text/csv:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+          text/html:
+            schema:
+              $ref: '#/components/schemas/Assent-write'
+        description: 'The updated Assent resource'
+    delete:
+      tags:
+        - Assent
+      operationId: deleteAssentItem
+      summary: 'Removes the Assent resource.'
+      responses:
+        204:
+          description: 'Assent resource deleted'
+        404:
+          description: 'Resource not found'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+  '/assents/{id}/audit_trail':
+    get:
+      tags:
+        - Assent
+      operationId: get_audit_trailAssentItem
+      summary: 'Retrieves a Assent resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Assent resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
+  '/assents/{id}/change_log':
+    get:
+      tags:
+        - Assent
+      operationId: get_change_logsAssentItem
+      summary: 'Retrieves a Assent resource.'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        -
+          name: Authorization
+          description: 'The JWT of the entity performing the request'
+          in: header
+        -
+          name: API-Version
+          description: 'The version of the API conform [Landelijke API-strategie.](https://geonovum.github.io/KP-APIs/#versioning)'
+          example: 1.0.1
+          in: header
+        -
+          name: X-NLX-Logrecord-ID
+          description: 'A  globally unique id of the request, which makes a request traceable throughout the network.'
+          in: header
+        -
+          name: X-NLX-Request-Process-Id
+          description: 'A process id for purpose registration (doelbinding)'
+          in: header
+        -
+          name: X-NLX-Request-Data-Elements
+          description: 'A list of requested data elements'
+          in: header
+        -
+          name: X-NLX-Request-Data-Subject
+          description: 'A key-value list of data subjects related to this request. e.g. `bsn=12345678, kenteken=ab-12-fg`'
+          in: header
+        -
+          name: X-NLX-Audit-Clarification
+          description: 'A clarification as to why a request has been made  (doelbinding)'
+          in: header
+        -
+          name: Link
+          description: 'A [websub](https://www.w3.org/TR/websub/#discovery) header like <https://hub.example.com/>; rel="hub"'
+          in: header
+        -
+          name: 'extend[]'
+          required: false
+          description: 'An array of nested objects to include in the return object'
+          in: query
+          schema:
+            type: array
+        -
+          name: 'fields[]'
+          required: false
+          description: 'An array of fields to return in output, wil return all fields is not supplied'
+          in: query
+          schema:
+            type: array
+        -
+          name: validOn
+          required: false
+          description: 'Returns object as valid on a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validFrom
+          required: false
+          description: 'Returns objects valid from a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+        -
+          name: validUntil
+          required: false
+          description: 'Returns objects valid until a given date time'
+          schema:
+            type: string
+            format: date-time
+          in: query
+      responses:
+        200:
+          description: 'Assent resource response'
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/json+ld:
+              schema:
+                $ref: '#/components/schemas/Assent:jsonld-read'
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+hal:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+vnd.api:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/health+json:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/json+health:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            application/x-yaml:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/Assent-read'
+        404:
+          description: 'Resource not found'
+      produces:
+        - application/health+json
   /audit_trails:
     get:
       tags:
@@ -2890,6 +4051,248 @@ paths:
         description: 'The updated WebHook resource'
 components:
   schemas:
+    Assent-read:
+      type: object
+      description: 'An assent registers if assents are given for mutations that require one.'
+      properties:
+        id:
+          readOnly: true
+          type: string
+          format: uuid
+        token:
+          description: 'a secret token used to validate the assent'
+          type: string
+          nullable: true
+        name:
+          description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
+          type: string
+        description:
+          description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
+          type: string
+          nullable: true
+        request:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        forwardUrl:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        property:
+          description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
+          type: string
+          nullable: true
+        process:
+          description: 'The process that this assent originated from'
+          type: string
+          nullable: true
+        contact:
+          description: 'The contact that this assent applies to'
+          type: string
+          nullable: true
+        person:
+          description: 'The person that this assent applies to'
+          type: string
+          nullable: true
+        status:
+          description: |
+            The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
+            example requested
+          type: string
+          nullable: true
+        requester:
+          description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
+          type: string
+        dateCreated:
+          description: 'The moment this resource was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this resource last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+        - requester
+    Assent-write:
+      type: object
+      description: 'An assent registers if assents are given for mutations that require one.'
+      required:
+        - name
+        - requester
+      properties:
+        name:
+          description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
+          type: string
+        description:
+          description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
+          type: string
+          nullable: true
+        request:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        forwardUrl:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        property:
+          description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
+          type: string
+          nullable: true
+        process:
+          description: 'The process that this assent originated from'
+          type: string
+          nullable: true
+        contact:
+          description: 'The contact that this assent applies to'
+          type: string
+          nullable: true
+        person:
+          description: 'The person that this assent applies to'
+          type: string
+          nullable: true
+        status:
+          description: |
+            The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
+            example requested
+          type: string
+          nullable: true
+        requester:
+          description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
+          type: string
+    'Assent:jsonld-read':
+      type: object
+      description: 'An assent registers if assents are given for mutations that require one.'
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: string
+          format: uuid
+        token:
+          description: 'a secret token used to validate the assent'
+          type: string
+          nullable: true
+        name:
+          description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
+          type: string
+        description:
+          description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
+          type: string
+          nullable: true
+        request:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        forwardUrl:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        property:
+          description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
+          type: string
+          nullable: true
+        process:
+          description: 'The process that this assent originated from'
+          type: string
+          nullable: true
+        contact:
+          description: 'The contact that this assent applies to'
+          type: string
+          nullable: true
+        person:
+          description: 'The person that this assent applies to'
+          type: string
+          nullable: true
+        status:
+          description: |
+            The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
+            example requested
+          type: string
+          nullable: true
+        requester:
+          description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
+          type: string
+        dateCreated:
+          description: 'The moment this resource was created'
+          type: string
+          format: date-time
+          nullable: true
+        dateModified:
+          description: 'The moment this resource last Modified'
+          type: string
+          format: date-time
+          nullable: true
+      required:
+        - name
+        - requester
+    'Assent:jsonld-write':
+      type: object
+      description: 'An assent registers if assents are given for mutations that require one.'
+      required:
+        - name
+        - requester
+      properties:
+        '@context':
+          readOnly: true
+          type: string
+        '@id':
+          readOnly: true
+          type: string
+        '@type':
+          readOnly: true
+          type: string
+        name:
+          description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
+          type: string
+        description:
+          description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
+          type: string
+          nullable: true
+        request:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        forwardUrl:
+          description: 'The request that this assent applies to'
+          type: string
+          nullable: true
+        property:
+          description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
+          type: string
+          nullable: true
+        process:
+          description: 'The process that this assent originated from'
+          type: string
+          nullable: true
+        contact:
+          description: 'The contact that this assent applies to'
+          type: string
+          nullable: true
+        person:
+          description: 'The person that this assent applies to'
+          type: string
+          nullable: true
+        status:
+          description: |
+            The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
+            example requested
+          type: string
+          nullable: true
+        requester:
+          description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
+          type: string
     AuditTrail-read:
       type: object
       description: 'An resource representing a log line.'
@@ -3433,6 +4836,123 @@ components:
           type: string
           nullable: true
 definitions:
+  Assent-read:
+    properties:
+      id:
+        description: ''
+        type: \UuidInterface
+      token:
+        description: 'a secret token used to validate the assent'
+        type: string
+        maxLength: 255
+      name:
+        description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
+        type: string
+        example: 'My Assent'
+        maxLength: 255
+      description:
+        description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
+        type: string
+        example: 'This is the best assent ever'
+      request:
+        description: 'The request that this assent applies to'
+        type: string
+        example: 'https://www.example.org/requests/1'
+        maxLength: 255
+      forwardUrl:
+        description: 'The request that this assent applies to'
+        type: string
+        example: 'https://www.example.org/requests/1'
+        maxLength: 255
+      property:
+        description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
+        type: string
+        example: 'https://www.example.org/people/1'
+        maxLength: 255
+      process:
+        description: 'The process that this assent originated from'
+        type: string
+        example: 'https://www.example.org/processes/1'
+        maxLength: 255
+      contact:
+        description: 'The contact that this assent applies to'
+        type: string
+        example: 'https://www.example.org/contacts/1'
+        maxLength: 255
+      person:
+        description: 'The person that this assent applies to'
+        type: string
+        example: 'https://www.example.org/people/2'
+        maxLength: 255
+      status:
+        description: |
+          The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
+          example requested
+        type: string
+        maxLength: 255
+      requester:
+        description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
+        type: string
+        maxLength: 255
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+    required: []
+  Assent-write:
+    properties:
+      name:
+        description: 'The name of this assend is displayed as a title to end users and should make clear what they arre assending to'
+        type: string
+        example: 'My Assent'
+        maxLength: 255
+      description:
+        description: 'The description of this assend is displayed to end users as aditional information and should make clear what they arre assending to'
+        type: string
+        example: 'This is the best assent ever'
+      request:
+        description: 'The request that this assent applies to'
+        type: string
+        example: 'https://www.example.org/requests/1'
+        maxLength: 255
+      forwardUrl:
+        description: 'The request that this assent applies to'
+        type: string
+        example: 'https://www.example.org/requests/1'
+        maxLength: 255
+      property:
+        description: 'The property of a request that this assent applies to e.g. parner in meldingvoorgenomenhuwelijk'
+        type: string
+        example: 'https://www.example.org/people/1'
+        maxLength: 255
+      process:
+        description: 'The process that this assent originated from'
+        type: string
+        example: 'https://www.example.org/processes/1'
+        maxLength: 255
+      contact:
+        description: 'The contact that this assent applies to'
+        type: string
+        example: 'https://www.example.org/contacts/1'
+        maxLength: 255
+      person:
+        description: 'The person that this assent applies to'
+        type: string
+        example: 'https://www.example.org/people/2'
+        maxLength: 255
+      status:
+        description: |
+          The status of this assent e.g. requested, granted, declined, cancelled, withdrawn
+          example requested
+        type: string
+        maxLength: 255
+      requester:
+        description: 'requester The organisation (RSIN) or person (BSN) that is responsible for making this assent'
+        type: string
+        maxLength: 255
+    required: []
   WebHook-read:
     properties:
       id:
@@ -3587,12 +5107,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-12-01 12:13:31'
+        example: '2021-02-18 01:20:34'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-12-01 12:13:31'
+        example: '2021-02-18 01:20:34'
     required: []
   AuditTrail-write:
     properties:
@@ -3640,12 +5160,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2020-12-01 12:13:31'
+        example: '2021-02-18 01:20:34'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2020-12-01 12:13:31'
+        example: '2021-02-18 01:20:34'
     required: []
   ChangeLog-write:
     properties:
@@ -3656,6 +5176,12 @@ definitions:
         maxLength: 2555
     required: []
 tags:
+  -
+    name: Assent
+    description: |
+      An assent registers if assents are given for mutations that require one.
+      
+      
   -
     name: WebHook
     description: |
@@ -3693,7 +5219,7 @@ host: irc.zaakonline.nl
 servers:
   -
     name: zuid-drecht.nl
-    url: ias.dev.zuid-drecht.nl
+    url: instemmingservice.dev.zuid-drecht.nl
 externalDocs:
   -
     description: 'OAS Documentatie'
