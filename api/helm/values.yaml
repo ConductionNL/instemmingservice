@@ -11,8 +11,8 @@ settings:
   repro: https://github.com/ConductionNL/instemmingservice
   demo: ias.zaakonline.nl
   domain: zuid-drecht.nl
-  subdomain: ias
-  subpath: ias
+  subdomain: instemmingservice
+  subpath: instemmingservice
   subpathRouting: false
   env: dev
   web: false
