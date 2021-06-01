@@ -60,7 +60,6 @@ class AssentService
             if (key_exists('contact', $organization) && $organization['contact']) {
                 $sender = $organization['contact'];
             }
-
         } elseif ($senderArray['component'] == 'cc') {
             $cc = $this->commonGroundService->getResource($senderArray);
             if (key_exists('emails', $cc) && count($cc['emails']) > 0 && key_exists('email', $cc['emails'][0])) {
