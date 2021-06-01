@@ -3,10 +3,10 @@ entries:
   instemmingservice:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-02-19T14:51:22.0969168Z"
+    created: "2021-06-01T07:52:29.9573145Z"
     description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
       beschikbaar.
-    digest: cda058720a963df90641be5831bc5c518fd14c04605010b50bff4e5bd32878fb
+    digest: e00b4f1dcc9cf8f1b8d766b6f55e662fc8c65c439351892317ce64a57b61ffa9
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -31,7 +31,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-02-19T14:51:22.1149695Z"
+    created: "2021-06-01T07:52:29.9738556Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,4 +60,4 @@ entries:
     urls:
     - charts/postgresql-10.1.1.tgz
     version: 10.1.1
-generated: "2021-02-19T14:51:22.0858433Z"
+generated: "2021-06-01T07:52:29.9380065Z"
