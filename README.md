@@ -1,9 +1,13 @@
 # instemmingservice
+[![StyleCI](https://github.styleci.io/repos/210753780/shield?branch=master)](https://github.styleci.io/repos/210753780?branch=master)
+[![Docker Image CI](https://github.com/ConductionNL/instemmingservice/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/instemmingservice/actions?query=workflow%3A"Docker+Image+CI")
+[![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/instemmingservice)](https://artifacthub.io/packages/helm/instemmingservice/instemmingservice)
+[![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/instemmingservice?branch=master)](https://bettercodehub.com/)
 
 Description
 ----
-Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.
-
+Het Instemmingen Registratie Component heeft als doel om instemmingen vast te leggen ten opzichte van resources. Hierbij wordt de instemming verleend door een rechtspersoon.
+Instemmingen kunnen zowel specifiek zijn (dit verzoek mag namens mij worden ingediend), rol gebonden (ik ga er mee akkoord getuige voor dit huwelijk te zijn), als generiek. Generieke instemmingen worden afgegeven aan een (rechts)persoon ten opzichte van een verzoektype (deze persoon mag namens mij meldingen openbare ruimte doen).
 Additional Information
 ----
 
