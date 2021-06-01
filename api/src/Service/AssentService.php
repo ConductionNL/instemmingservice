@@ -30,45 +30,44 @@ class AssentService
         $this->em->flush();
     }
 
-    public function createMessage($content, $resource, $receiver, $sender, $organization, $serviceOrganization)
+    public function createMessage($mail)
     {
         $messages = [];
-        $message['service'] = $this->commonGroundService->getResourceList(['component'=>'bs', 'type'=>'services'], "?type=mailer&organization={$serviceOrganization}")['hydra:member'][0]['@id'];
+        $message['service'] = $this->commonGroundService->getResourceList(['component'=>'bs', 'type'=>'services'], "?type=mailer&organization={$mail['serviceOrganization']}")['hydra:member'][0]['@id'];
         $message['status'] = 'queued';
-        $message['sender'] = $sender;
-        $message['reciever'] = $receiver;
-        $message['content'] = $content;
-        $message['data'] = ['resource'=>$resource, 'receiver'=>$receiver, 'organization'=>$organization, 'sender'=>$sender];
+        $message['sender'] = $mail['sender'];
+        $message['reciever'] = $mail['receiver'];
+        $message['content'] = $mail['content'];
+        $message['data'] = ['resource'=>$mail['resource'], 'receiver'=>$mail['receiver'], 'organization'=>$mail['organization'], 'sender'=>$mail['sender']];
 
         return $message;
     }
 
     public function processAssent(string $assent)
     {
-        $assent = $this->commonGroundService->getResource($assent);
-        $contact = $assent['contact'];
-        $content = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}/e-mail-instemming"])['@id'];
-        $serviceOrganization = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"])['organization']['@id'];
-        $senderArray = $this->commonGroundService->isCommonGround($assent['requester']);
+        $mail = [];
+        $mail['assent'] = $this->commonGroundService->getResource($assent);
+        $mail['contact'] = $mail['assent']['contact'];
+        $mail['content'] = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}/e-mail-instemming"])['@id'];
+        $mail['serviceOrganization'] = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"])['organization']['@id'];
+        $senderArray = $this->commonGroundService->isCommonGround($mail['assent']['requester']);
 
-        $sender = $contact;
-        $organization = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"]);
+        $mail['contact'] = $mail['assent']['contact'];
+        $mail['organization'] = $this->commonGroundService->getResource(['component'=>'wrc', 'type'=>'applications', 'id'=>"{$this->params->get('app_id')}"]);
 
         if ($senderArray['component'] == 'wrc') {
             $organization = $this->commonGroundService->getResource($senderArray);
             if (key_exists('contact', $organization) && $organization['contact']) {
                 $sender = $organization['contact'];
             }
-            $organization = $organization['@id'];
-//            var_dump($organization);
         } elseif ($senderArray['component'] == 'cc') {
             $cc = $this->commonGroundService->getResource($senderArray);
             if (key_exists('emails', $cc) && count($cc['emails']) > 0 && key_exists('email', $cc['emails'][0])) {
-                $sender = $assent['requester'];
+                $sender = $mail['assent']['requester'];
             }
         }
 
-        $message = $this->createMessage($content, $assent, $contact, $sender, $organization, $serviceOrganization);
+        $message = $this->createMessage($mail);
         $result[] = $this->commonGroundService->createResource($message, ['component'=>'bs', 'type'=>'messages'])['@id'];
 
         return $result;
