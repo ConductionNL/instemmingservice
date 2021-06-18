@@ -3,6 +3,8 @@
 [![Docker Image CI](https://github.com/ConductionNL/instemmingservice/workflows/Docker%20Image%20CI/badge.svg?branch=master)](https://github.com/ConductionNL/instemmingservice/actions?query=workflow%3A"Docker+Image+CI")
 [![Artifacthub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/instemmingservice)](https://artifacthub.io/packages/helm/instemmingservice/instemmingservice)
 [![BCH compliance](https://bettercodehub.com/edge/badge/ConductionNL/instemmingservice?branch=master)](https://bettercodehub.com/)
+[![Componenten Catalogus](https://img.shields.io/badge/vng--componentencatalogus-posted-green)](https://componentencatalogus.commonground.nl/componenten/22?)
+
 
 Description
 ----
