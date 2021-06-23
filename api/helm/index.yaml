@@ -3,10 +3,16 @@ entries:
   instemmingservice:
   - apiVersion: v1
     appVersion: V1.0
-    created: "2021-06-01T07:52:29.9573145Z"
-    description: Naast deze JSON rest API is er ook een [graphql](/graphql) interface
-      beschikbaar.
-    digest: e00b4f1dcc9cf8f1b8d766b6f55e662fc8c65c439351892317ce64a57b61ffa9
+    created: "2021-06-23T06:59:39.7182828Z"
+    description: Het Instemmingen Registratie Component heeft als doel om instemmingen
+      vast te leggen ten opzichte van resources. Hierbij wordt de instemming verleend
+      door een rechtspersoon. Instemmingen kunnen zowel specifiek zijn (dit verzoek
+      mag namens mij worden ingediend), rol gebonden (ik ga er mee akkoord getuige
+      voor dit huwelijk te zijn), als generiek. Generieke instemmingen worden afgegeven
+      aan een (rechts)persoon ten opzichte van een verzoektype (deze persoon mag namens
+      mij meldingen openbare ruimte doen). Instemmingen fungeren hiermee zowel als
+      een digitale handtekening, als mandaat.
+    digest: a73b645453e7f39d2a81bfc8f8c2ae1a5a20c7f59709fd2848addda743e6a4ff
     home: https://www.conduction.nl
     icon: https://conductionnl.github.io/images/conduction_avatar_blue_on_transparant.svg
     keywords:
@@ -31,7 +37,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.10.0
-    created: "2021-06-01T07:52:29.9738556Z"
+    created: "2021-06-23T06:59:39.7324655Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -60,4 +66,4 @@ entries:
     urls:
     - charts/postgresql-10.1.1.tgz
     version: 10.1.1
-generated: "2021-06-01T07:52:29.9380065Z"
+generated: "2021-06-23T06:59:39.7010179Z"

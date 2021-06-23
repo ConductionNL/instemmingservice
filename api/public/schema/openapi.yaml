@@ -12,7 +12,7 @@ info:
     - Docker Image: [online]() 
     - Datamodel: [postman](schema/instemmingservice.postman_collection.json) / [oas](schema/openapi.yaml) / [pdf](schema/datamodel.pdf) / [modelio (zip)](schema/Datamodel_Modelio.zip) 
     
-    Naast deze JSON rest API is er ook een [graphql](/graphql) interface beschikbaar.         
+    Het Instemmingen Registratie Component heeft als doel om instemmingen vast te leggen ten opzichte van resources. Hierbij wordt de instemming verleend door een rechtspersoon. Instemmingen kunnen zowel specifiek zijn (dit verzoek mag namens mij worden ingediend), rol gebonden (ik ga er mee akkoord getuige voor dit huwelijk te zijn), als generiek. Generieke instemmingen worden afgegeven aan een (rechts)persoon ten opzichte van een verzoektype (deze persoon mag namens mij meldingen openbare ruimte doen). Instemmingen fungeren hiermee zowel als een digitale handtekening, als mandaat.         
     
 paths:
   /assents:
@@ -4836,6 +4836,56 @@ components:
           type: string
           nullable: true
 definitions:
+  WebHook-read:
+    properties:
+      id:
+        description: 'The UUID identifier of this object'
+        type: string
+        example: e2984465-190a-4562-829e-a8cca81aa35d
+        format: uuid
+      assent:
+        description: 'assent the task is related to'
+        type: string
+        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
+        format: url
+      request:
+        description: 'request the task is related to'
+        type: string
+        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
+        format: url
+      changeLog:
+        description: 'changeLogs the webhook is related to'
+        type: string
+        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
+        format: url
+      result:
+        description: 'The result of the webhook'
+        type: array
+      dateCreated:
+        description: 'The moment this resource was created'
+        type: \Datetime
+      dateModified:
+        description: 'The moment this resource last Modified'
+        type: \Datetime
+    required: []
+  WebHook-write:
+    properties:
+      assent:
+        description: 'assent the task is related to'
+        type: string
+        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
+        format: url
+      request:
+        description: 'request the task is related to'
+        type: string
+        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
+        format: url
+      changeLog:
+        description: 'changeLogs the webhook is related to'
+        type: string
+        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
+        format: url
+    required: []
   Assent-read:
     properties:
       id:
@@ -4953,55 +5003,58 @@ definitions:
         type: string
         maxLength: 255
     required: []
-  WebHook-read:
+  ChangeLog-read:
     properties:
       id:
         description: 'The UUID identifier of this object'
         type: string
         example: e2984465-190a-4562-829e-a8cca81aa35d
         format: uuid
-      assent:
-        description: 'assent the task is related to'
+      note:
+        description: 'A note conserning this log lin'
         type: string
-        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
-        format: url
-      request:
-        description: 'request the task is related to'
+        example: 'This log line is suspicius'
+        maxLength: 2555
+      action:
+        description: ''
         type: string
-        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
-        format: url
-      changeLog:
-        description: 'changeLogs the webhook is related to'
+      objectId:
+        description: ''
         type: string
-        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
-        format: url
-      result:
-        description: 'The result of the webhook'
+      objectClass:
+        description: ''
+        type: string
+      version:
+        description: ''
+        type: int
+      data:
+        description: ''
         type: array
+      username:
+        description: ''
+        type: string
+      session:
+        description: 'The moment this request was created'
+        type: string
+        maxLength: 255
       dateCreated:
-        description: 'The moment this resource was created'
-        type: \Datetime
+        description: 'The moment this request was created'
+        type: string
+        format: date-time
+        example: '2021-06-23 06:54:38'
       dateModified:
-        description: 'The moment this resource last Modified'
-        type: \Datetime
+        description: 'The moment this request last Modified'
+        type: string
+        format: date-time
+        example: '2021-06-23 06:54:38'
     required: []
-  WebHook-write:
+  ChangeLog-write:
     properties:
-      assent:
-        description: 'assent the task is related to'
+      note:
+        description: 'A note conserning this log lin'
         type: string
-        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
-        format: url
-      request:
-        description: 'request the task is related to'
-        type: string
-        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
-        format: url
-      changeLog:
-        description: 'changeLogs the webhook is related to'
-        type: string
-        example: 'https://vrc.zuid-drecht.nl/request/e2984465-190a-4562-829e-a8cca81aa35d'
-        format: url
+        example: 'This log line is suspicius'
+        maxLength: 2555
     required: []
   AuditTrail-read:
     properties:
@@ -5107,12 +5160,12 @@ definitions:
         description: 'The moment this request was created'
         type: string
         format: date-time
-        example: '2021-06-01 07:49:41'
+        example: '2021-06-23 06:54:38'
       dateModified:
         description: 'The moment this request last Modified'
         type: string
         format: date-time
-        example: '2021-06-01 07:49:41'
+        example: '2021-06-23 06:54:38'
     required: []
   AuditTrail-write:
     properties:
@@ -5122,66 +5175,7 @@ definitions:
         example: 'This log line looks suspicius'
         maxLength: 2555
     required: []
-  ChangeLog-read:
-    properties:
-      id:
-        description: 'The UUID identifier of this object'
-        type: string
-        example: e2984465-190a-4562-829e-a8cca81aa35d
-        format: uuid
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-      action:
-        description: ''
-        type: string
-      objectId:
-        description: ''
-        type: string
-      objectClass:
-        description: ''
-        type: string
-      version:
-        description: ''
-        type: int
-      data:
-        description: ''
-        type: array
-      username:
-        description: ''
-        type: string
-      session:
-        description: 'The moment this request was created'
-        type: string
-        maxLength: 255
-      dateCreated:
-        description: 'The moment this request was created'
-        type: string
-        format: date-time
-        example: '2021-06-01 07:49:41'
-      dateModified:
-        description: 'The moment this request last Modified'
-        type: string
-        format: date-time
-        example: '2021-06-01 07:49:41'
-    required: []
-  ChangeLog-write:
-    properties:
-      note:
-        description: 'A note conserning this log lin'
-        type: string
-        example: 'This log line is suspicius'
-        maxLength: 2555
-    required: []
 tags:
-  -
-    name: Assent
-    description: |
-      An assent registers if assents are given for mutations that require one.
-      
-      
   -
     name: WebHook
     description: |
@@ -5189,13 +5183,19 @@ tags:
       
       
   -
-    name: AuditTrail
+    name: Assent
+    description: |
+      An assent registers if assents are given for mutations that require one.
+      
+      
+  -
+    name: ChangeLog
     description: |
       An resource representing a log line.
       
       This entity represents a product that can be ordered via the OrderRegistratieComponent.
   -
-    name: ChangeLog
+    name: AuditTrail
     description: |
       An resource representing a log line.
       
@@ -5206,15 +5206,15 @@ securityDefinitions:
     authorizationUrl: 'http://petstore.swagger.io/api/oauth/dialog'
     flow: implicit
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
   JWT-Token:
     type: apiKey
     in: header
     name: Authorization
     scopes:
-      read: 'read right to the ChangeLog resource'
-      write: 'write right to the ChangeLog resource'
+      read: 'read right to the AuditTrail resource'
+      write: 'write right to the AuditTrail resource'
 host: irc.zaakonline.nl
 servers:
   -
